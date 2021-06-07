@@ -9,7 +9,7 @@ from telebot import types
 
 rrd_path = "weather.rrd"
 
-bot = telebot.TeleBot("a")
+bot = telebot.TeleBot("")
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
@@ -46,6 +46,21 @@ def handle_message(message):
 
 @bot.message_handler(regexp="Погода за неделю")
 def handle_message(message):
+    f_name_temp = str(message.from_user.id) + "_week_graph_temp.png"
+    f_name_hum = str(message.from_user.id) + "_week_graph_hum.png"
+    f_name_pressure = str(message.from_user.id) + "_week_graph_pressure.png"
+    buttonsrrd.draw_week_graph_temp(rrd_path,f_name_temp)
+    buttonsrrd.draw_week_graph_hum(rrd_path,f_name_hum)
+    buttonsrrd.draw_week_graph_pressure(rrd_path,f_name_pressure)
+    graph_temp = open(f_name_temp,'rb')
+    graph_hum = open(f_name_hum,'rb')
+    graph_pressure = open(f_name_pressure,'rb')
+    bot.send_photo(message.from_user.id, graph_temp)
+    bot.send_photo(message.from_user.id, graph_hum)
+    bot.send_photo(message.from_user.id, graph_pressure)
+    os.remove(f_name_temp)
+    os.remove(f_name_pressure)
+    os.remove(f_name_hum)
     pass
 
 bot.polling(none_stop=True, interval=0)
