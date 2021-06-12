@@ -17,7 +17,7 @@ def send_welcome(message):
     itembtn1 = types.KeyboardButton('⛅ Погода сейчас')
     itembtn2 = types.KeyboardButton('🕖 Погода за сегодня')
     itembtn3 = types.KeyboardButton('📅 Погода за неделю')
-    itembtn3 = types.KeyboardButton('Экспорт')
+    itembtn4 = types.KeyboardButton('Экспорт')
     markup.add(itembtn1,itembtn2,itembtn3,itembtn4)
     bot.send_message(message.from_user.id, "Чем вам помочь?", reply_markup=markup)
 
@@ -84,4 +84,4 @@ def handle_message(message):
     send_welcome(message)
     pass
 
-tb.polling(none_stop=True, interval=0, timeout=20)
+bot.polling(none_stop=True, interval=0, timeout=20)

@@ -1,4 +1,4 @@
- rrdtool create weahter.rrd \
+ rrdtool create weather.rrd \
    --step 1m \
    DS:temperature:GAUGE:1m:0:150 \
    DS:humidity:GAUGE:1m:0:110 \
