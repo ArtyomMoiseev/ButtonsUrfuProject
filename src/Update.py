@@ -2,6 +2,7 @@ import smbus2
 import bme280
 import time
 import rrdtool
+import buttonsrrd
 from datetime import datetime
 
 port = 1
@@ -17,4 +18,7 @@ while True:
 	data = bme280.sample(bus, address, calibration_params)
 	rrd_record = "N:" + str(round(data.temperature,2)) + ':' + str(round(data.humidity,2)) + ':' + str(round(data.pressure,2))
 	rrdtool.update(rrd_path, rrd_record)
-	time.sleep(60)
+	draw_day_graph_temp("day_graph_temp",rrd_path)
+	draw_day_graph_hum("day_graph_hum",rrd_path)
+	draw_day_graph_pressure("day_graph_pressure",rrd_path)
+	time.sleep(20)
