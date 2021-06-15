@@ -82,8 +82,8 @@ def draw_week_graph_pressure(rrd_path,file_name):
 
 def export_data(rrd_path,start,step):
 	data = rrdtool.fetch(rrd_path, 'AVERAGE', '-r', str(step), '-s', str(start))
-	with open('empty', 'w') as f:
+	with open('WeatherData', 'w') as f:
 		for item in data:
 			f.write("%s\n" % str(item))
-	f = open('empty')
+	f = open('WeatherData')
 	return f
