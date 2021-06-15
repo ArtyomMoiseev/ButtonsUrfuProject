@@ -55,16 +55,6 @@ def handle_message(message):
     os.remove(f_name_hum)
     pass
 
-@bot.message_handler(regexp="Экспорт")
-def handle_message(message):
-    markup = types.ReplyKeyboardMarkup(row_width=1)
-    itembtn1 = types.KeyboardButton('Экспорт базы данных')
-    itembtn2 = types.KeyboardButton('⭐ Умный экспорт')
-    itembtn3 = types.KeyboardButton('Назад')
-    markup.add(itembtn1,itembtn2,itembtn3)
-    bot.send_message(message.from_user.id, "Выберите тип экспорта", reply_markup=markup)
-    pass
-
 @bot.message_handler(regexp="Экспорт базы данных")
 def handle_message(message):
     f = open("weather.rrd")
@@ -77,6 +67,16 @@ def handle_message(message):
     f = buttonsrrd.export_data(rrd_path,'-7d', '1m')
     bot.send_document(message.from_user.id, f)
     send_welcome(message)
+    pass
+    
+@bot.message_handler(regexp="Экспорт")
+def handle_message(message):
+    markup = types.ReplyKeyboardMarkup(row_width=1)
+    itembtn1 = types.KeyboardButton('Экспорт базы данных')
+    itembtn2 = types.KeyboardButton('⭐ Умный экспорт')
+    itembtn3 = types.KeyboardButton('Назад')
+    markup.add(itembtn1,itembtn2,itembtn3)
+    bot.send_message(message.from_user.id, "Выберите тип экспорта", reply_markup=markup)
     pass
 
 @bot.message_handler(regexp="Назад")
