@@ -22,7 +22,7 @@ def draw_day_graph_temp(rrd_path,file_name):
 
 def draw_week_graph_temp(rrd_path,file_name):
 	rrdtool.graph(file_name,
-	"-w 785 -h 240 -a PNG",
+	"-w 785 -h 480 -a PNG",
 	'--start', "-7d",
     '--end', 'now',
 	"--slope-mode",
@@ -34,7 +34,7 @@ def draw_week_graph_temp(rrd_path,file_name):
 
 def draw_day_graph_hum(rrd_path,file_name):
 	rrdtool.graph(file_name,
-	"-w 785 -h 240 -a PNG",
+	"-w 785 -h 480 -a PNG",
 	'--start', "-1d",
     '--end', 'now',
 	"--slope-mode",
@@ -46,7 +46,7 @@ def draw_day_graph_hum(rrd_path,file_name):
 
 def draw_week_graph_hum(rrd_path,file_name):
 	rrdtool.graph(file_name,
-	"-w 785 -h 240 -a PNG",
+	"-w 785 -h 480 -a PNG",
 	'--start', "-7d",
     '--end', 'now',
 	"--slope-mode",
@@ -58,7 +58,7 @@ def draw_week_graph_hum(rrd_path,file_name):
 
 def draw_day_graph_pressure(rrd_path,file_name):
 	rrdtool.graph(file_name,
-	"-w 785 -h 240 -a PNG",
+	"-w 785 -h 480 -a PNG",
 	'--start', "-1d",
     '--end', 'now',
 	"--slope-mode",
@@ -70,7 +70,7 @@ def draw_day_graph_pressure(rrd_path,file_name):
 
 def draw_week_graph_pressure(rrd_path,file_name):
 	rrdtool.graph(file_name,
-	"-w 785 -h 240 -a PNG",
+	"-w 785 -h 480 -a PNG",
 	'--start', "-7d",
     '--end', 'now',
 	"--slope-mode",
