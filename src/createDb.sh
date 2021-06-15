@@ -6,4 +6,5 @@
    RRA:AVERAGE:0.5:1m:24h \
    RRA:AVERAGE:0.5:30m:30d \
    RRA:AVERAGE:0.5:4h:30d \
-   RRA:AVERAGE:0.5:8h:120d
+   RRA:AVERAGE:0.5:8h:120d & touch WeatherData
+  
