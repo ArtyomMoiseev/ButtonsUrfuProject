@@ -17,7 +17,7 @@ def send_welcome(message):
     itembtn1 = types.KeyboardButton('⛅ Погода сейчас')
     itembtn2 = types.KeyboardButton('🕖 Погода за сегодня')
     itembtn3 = types.KeyboardButton('📅 Погода за неделю')
-    itembtn4 = types.KeyboardButton('Экспорт')
+    itembtn4 = types.KeyboardButton('➡️ Экспорт')
     markup.add(itembtn1,itembtn2,itembtn3,itembtn4)
     bot.send_message(message.from_user.id, "Чем вам помочь?", reply_markup=markup)
 
@@ -57,14 +57,14 @@ def handle_message(message):
 
 @bot.message_handler(regexp="Экспорт базы данных")
 def handle_message(message):
-    f = open("weather.rrd")
+    f = open("weather.rrd", 'rb')
     bot.send_document(message.from_user.id, f)
     send_welcome(message)
     pass
 
 @bot.message_handler(regexp="Умный экспорт")
 def handle_message(message):
-    f = buttonsrrd.export_data(rrd_path,'-7d', '1m')
+    f = buttonsrrd.export_data(rrd_path,'-30d', '30m')
     bot.send_document(message.from_user.id, f)
     send_welcome(message)
     pass
